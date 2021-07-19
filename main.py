@@ -38,14 +38,12 @@ def echo_message(message):
         userinst = message.text
     text = "Хочешь подарок?"
     keyboard = myKeyboard(1,'Да','Yes0')
-    print(userinst)
     # bot.send_message(message.chat.id, text, parse_mode='HTML', reply_markup=keyboard)
 
 
 @bot.callback_query_handler(func=lambda call:True)
 def callback(call):
     global userinst
-    print(userinst)
     if call.message:
         if call.data == 'Yes1':
             text1 = "Ты подписан на Ваню???"
@@ -68,7 +66,7 @@ def callback(call):
                 bot.delete_message(call.message.chat.id, call.message.id)
                 bot.send_message(call.message.chat.id, text=text1, parse_mode='Markdown')
             else:
-                text1 = "Ты не подписался((( Скорее подпишись на Ваню!!! И пришли свой никнейм" + userinst
+                text1 = "Ты не подписался((( Скорее подпишись на Ваню!!! И пришли свой никнейм"
                 keyboard = types.InlineKeyboardMarkup(row_width=1)
                 btn1 = types.InlineKeyboardButton('Инста Вани', url='https://www.instagram.com/funtik_iv/')
                 keyboard.add(btn1)
@@ -76,7 +74,6 @@ def callback(call):
                 keyboard.add(btn2)
                 bot.delete_message(call.message.chat.id, call.message.id)
                 bot.send_message(call.message.chat.id, text=text1, parse_mode='HTML', reply_markup=keyboard)
-            print(userinst)
         elif call.data == 'No2':
             text1 = "Скорее подпишись на Ваню!!! И пришли свой никнейм"
             keyboard = types.InlineKeyboardMarkup(row_width=1)
