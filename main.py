@@ -4,7 +4,7 @@ from flask import Flask, request
 
 import telebot
 
-TOKEN = '1907784353:AAEy5-bJtlfrFHytdRMtjuQW2mtk2RDxBYA'
+TOKEN = '<api_token>'
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
 
@@ -30,7 +30,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://dzenduetbot.com/' + TOKEN)
+    bot.set_webhook(url='https://your_heroku_project.com/' + TOKEN)
     return "!", 200
 
 
