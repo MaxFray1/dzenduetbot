@@ -1,4 +1,4 @@
 pyTelegramBotApi==3.8.1
 Flask==2.0.1
 requests==2.26.0
-Flask-SSLify==0.1.5
+instabot==0.117.0
