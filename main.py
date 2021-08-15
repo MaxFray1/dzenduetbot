@@ -61,7 +61,8 @@ def callback(call):
             bot.delete_message(call.message.chat.id, call.message.id)
             bot.send_message(call.message.chat.id, text=text1, parse_mode='HTML', reply_markup=keyboard)
         elif call.data == 'Yes2':
-            if(userinst != "" and inst.check_follow(userinst)):
+            # if(userinst != "" and inst.check_follow(userinst)):
+            if (userinst != ""):
                 text1 = 'Вот твоя ссылка: [http://ссылка.хрю/322qwerty](https://www.youtube.com/watch?v=dQw4w9WgXcQ)'
                 bot.delete_message(call.message.chat.id, call.message.id)
                 bot.send_message(call.message.chat.id, text=text1, parse_mode='Markdown')
