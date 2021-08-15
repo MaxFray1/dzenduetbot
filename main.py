@@ -5,12 +5,12 @@ from flask import Flask, request
 import telebot
 from telebot import types
 
-import parceInst as inst
+# import parceInst as inst
 
 TOKEN = '1949484698:AAFkkfN586lV2NjFDu6XBcegj_nN6g7T7q8'
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
-inst.init_inst_bot()
+# inst.init_inst_bot()
 userinst = ""
 
 
