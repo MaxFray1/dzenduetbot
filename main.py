@@ -29,7 +29,7 @@ def send_welcome(message):
 def echo_message(message):
     text = 'Привет. Хочешь получить Чек-лист "Яндекс Дзеню И как я на нем заработал 5🍋"?'
     keyboard = myKeyboard(1,'Да','Yes1')
-    bot.send_message(message.chat.id, text, parse_mode='HTML', reply_markup=keyboard)
+    # bot.send_message(message.chat.id, text, parse_mode='HTML', reply_markup=keyboard)
 
 
 @bot.callback_query_handler(func=lambda call:True)
