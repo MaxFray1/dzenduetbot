@@ -42,7 +42,7 @@ def callback(call):
             bot.send_message(call.message.chat.id, text1, parse_mode='HTML', reply_markup=keyboard)
         elif call.data == 'No2':
             text1 = "Мне будет намного приятнее выдавать чек-лист, если ты на меня подпишешься https://www.instagram.com/funtik_iv/"
-            keyboard = myKeyboard(1,'Готово', 'Yes3')
+            keyboard = myKeyboard(1,'Готово', 'Yes2')
             bot.delete_message(call.message.chat.id, call.message.id)
             bot.send_message(call.message.chat.id, text=text1, parse_mode='HTML', reply_markup=keyboard)
         elif call.data == 'Yes2':
@@ -68,3 +68,5 @@ def webhook():
 
 if __name__ == "__main__":
     server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
+
+
