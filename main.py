@@ -20,8 +20,12 @@ def myKeyboard(count=0, btn1_text="", cb_data1="", btn2_text="", cb_data2=""):
 
 @bot.message_handler(commands=['help', 'start'])
 def send_welcome(message):
-    text = 'Привет. Хочешь получить Чек-лист "Яндекс Дзеню И как я на нем заработал 5🍋"?'
-    keyboard = myKeyboard(1,'Да', 'Yes1')
+    text = 'Привет, друг!\n\nПошаговая инструкция по заработку 50-100.000 рублей в месяц на Яндекс Дзене у тебя почти в кармане' \
+           '\n\n❗Но хочу тебя кое о чем попросить' \
+           '\n\n⃣Подпишись на мой Инстаграм 👉' \
+           '\nhttps://www.instagram.com/funtik_iv/' \
+           '\n*Подписался?*'
+    keyboard = myKeyboard(1,'Готово', 'Yes1')
     bot.send_message(message.chat.id, text, parse_mode='HTML', reply_markup=keyboard)
 
 
@@ -36,8 +40,12 @@ def echo_message(message):
 def callback(call):
     if call.message:
         if call.data == 'Yes1':
-            text1 = "Подписан на меня в Инстаграме? https://www.instagram.com/funtik_iv/"
-            keyboard = myKeyboard(2,'Да', 'Yes2', 'Нет', 'No2')
+            text1 = "Отлично\n" \
+                    "Еще одна просьба - заполни, пожалуйста, анкету 📝\n" \
+                    "https://forms.gle/SDvy9UXVt1xrQfAa6\n" \
+                    "И, друзья, заполняйте по-чесноку всё. Инфа реально годная, а не очередная бесплатная херня. Всё о Дзене в одном файле.\n" \
+                    "✅ После заполнении анкеты, Гугл выдаст тебе ссылку на чек-лист\n\n" \
+            keyboard = myKeyboard(1,'Дерзай ⚡', 'Yes666')
             bot.delete_message(call.message.chat.id, call.message.id)
             bot.send_message(call.message.chat.id, text1, parse_mode='HTML', reply_markup=keyboard)
         elif call.data == 'No2':
@@ -68,5 +76,3 @@ def webhook():
 
 if __name__ == "__main__":
     server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
-
-
