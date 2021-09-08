@@ -39,13 +39,12 @@ def echo_message(message):
 def callback(call):
     if call.message:
         if call.data == 'Yes1':
-            text1 = "Отлично\n\n" \
+            text1 = "Отлично[. ](https://i.imgur.com/YIsLVdg.png)\n\n" \
                     "Еще одна просьба - заполни, пожалуйста, анкету 📝\n" \
                     "https://forms.gle/SDvy9UXVt1xrQfAa6\n\n" \
                     "И, друзья, заполняйте по-чесноку всё. Инфа реально годная, а не очередная бесплатная херня. Всё о Дзене в одном файле.\n\n" \
                     "✅ После заполнении анкеты, Гугл выдаст тебе ссылку на чек-лист\n\n" \
-                    "Дерзай ⚡" \
-                    "[ . ](https://i.imgur.com/YIsLVdg.png)"
+                    "Дерзай ⚡"
             keyboard = types.InlineKeyboardMarkup()
             url_button = types.InlineKeyboardButton(text="📝 Заполнить Анкету", url="https://example.com")
             keyboard.add(url_button)
