@@ -46,7 +46,7 @@ def callback(call):
                     "✅ После заполнении анкеты, Гугл выдаст тебе ссылку на чек-лист\n\n" \
                     "Дерзай ⚡"
             keyboard = types.InlineKeyboardMarkup()
-            url_button = types.InlineKeyboardButton(text="📝 Заполнить Анкету", url="https://example.com")
+            url_button = types.InlineKeyboardButton(text="📝 Заполнить Анкету", url="https://forms.gle/SDvy9UXVt1xrQfAa6")
             keyboard.add(url_button)
             # keyboard = myKeyboard(1,'📝 Заполнить Анкету', 'Yes666')
             bot.delete_message(call.message.chat.id, call.message.id)
