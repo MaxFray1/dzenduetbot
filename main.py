@@ -45,13 +45,13 @@ def callback(call):
                     "И, друзья, заполняйте по-чесноку всё. Инфа реально годная, а не очередная бесплатная херня. Всё о Дзене в одном файле.\n\n" \
                     "✅ После заполнении анкеты, Гугл выдаст тебе ссылку на чек-лист\n\n" \
                     "Дерзай ⚡" \
-                    "[ + https://i.imgur.com/YIsLVdg.png]"
+                    "[ ](https://i.imgur.com/YIsLVdg.png)"
             keyboard = types.InlineKeyboardMarkup()
             url_button = types.InlineKeyboardButton(text="📝 Заполнить Анкету", url="https://example.com")
             keyboard.add(url_button)
             # keyboard = myKeyboard(1,'📝 Заполнить Анкету', 'Yes666')
             bot.delete_message(call.message.chat.id, call.message.id)
-            bot.send_message(call.message.chat.id, text1, parse_mode='Markdown', reply_markup=keyboard)
+            bot.send_message(call.message.chat.id, text1, parse_mode='MarkdownV2', reply_markup=keyboard)
         elif call.data == 'No2':
             text1 = "Мне будет намного приятнее выдавать чек-лист, если ты на меня подпишешься https://www.instagram.com/funtik_iv/"
             keyboard = myKeyboard(1,'Готово', 'Yes2')
