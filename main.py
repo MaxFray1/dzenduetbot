@@ -35,13 +35,27 @@ def send_welcome(message):
     markup.add(btn3)
     markup.add(btn4)
     markup.add(btn5)
-    bot.send_message(message.chat.id, text, parse_mode='HTML', reply_markup=keyboard)
+    bot.send_message(message.chat.id, text, parse_mode='HTML', reply_markup=markup)
 
 
 @bot.message_handler(func=lambda message: True)
 def echo_message(message):
-    text = 'test'
-    bot.send_message(message.chat.id, text, parse_mode='HTML', reply_markup=keyboard)
+    text = 'Привет, друг!\n\n'\
+            'Это бот для выдачи Чек-Листа по заработку 50-100.000 рублей в месяц на Яндекс Дзене\n\n'\
+            '❗Но хочу задать тебе один вопрос\n\n'\
+            '✅ Как ты впервые узнал обо мне?'
+    markup = types.InlineKeyboardMarkup(row_width=1)
+    btn1 = types.InlineKeyboardButton("Youtube", callback_data="yt")
+    btn2 = types.InlineKeyboardButton("Инстаграм", callback_data="inst")
+    btn3 = types.InlineKeyboardButton("Знакомый в НН", callback_data="nn")
+    btn4 = types.InlineKeyboardButton("ВК Дзен Дуэт", callback_data="vk")
+    btn5 = types.InlineKeyboardButton("Telegram", callback_data="tg")
+    markup.add(btn1)
+    markup.add(btn2)
+    markup.add(btn3)
+    markup.add(btn4)
+    markup.add(btn5)
+    bot.send_message(message.chat.id, text, parse_mode='HTML', reply_markup=markup)
 
 
 @bot.callback_query_handler(func=lambda call:True)
