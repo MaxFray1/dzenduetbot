@@ -90,12 +90,12 @@ def callback(call):
             bot.send_message(call.message.chat.id, text2, parse_mode='HTML')
             bot.send_photo(call.message.chat.id, open('ivan2.jpg', 'rb'))
 
-@bot.message_handler(commands=['state_pass1337228322'])
-def send_welcome(message):
-    with open('statistics.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerows(list(zip(*user_list)))
-    bot.send_document(message.chat.id, open(r'statistics.csv, 'rb'))
+# @bot.message_handler(commands=['state_pass1337228322'])
+# def send_welcome(message):
+    # with open('statistics.csv', 'w', newline='') as csvfile:
+        # writer = csv.writer(csvfile)
+        # writer.writerows(list(zip(*user_list)))
+    # bot.send_document(message.chat.id, open(r'statistics.csv, 'rb'))
 
 @server.route('/' + TOKEN, methods=['POST'])
 def getMessage():
