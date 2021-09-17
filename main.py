@@ -81,7 +81,7 @@ def callback(call):
                     'https://www.instagram.com/funtik_iv/ \n\n'\
                     'В любом случае спасибо за уделенное время 💫'
             bot.send_message(call.message.chat.id, text1, parse_mode='HTML')
-            # bot.send_photo(call.message.chat.id, open('ivan1.jpg', 'rb'))
+            bot.send_photo(call.message.chat.id, open('ivan1.jpg', 'rb'))
             bot.send_message(call.message.chat.id, text2, parse_mode='HTML')
             # bot.send_photo(call.message.chat.id, open('ivan2.jpg', 'rb'))
             
