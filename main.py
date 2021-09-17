@@ -20,47 +20,69 @@ def myKeyboard(count=0, btn1_text="", cb_data1="", btn2_text="", cb_data2=""):
 
 @bot.message_handler(commands=['help', 'start'])
 def send_welcome(message):
-    text = 'Привет, друг!\n\nПошаговая инструкция по заработку 50-100.000 рублей в месяц на Яндекс Дзене у тебя почти в кармане' \
-           '\n\n❗Но хочу тебя кое о чем попросить' \
-           '\n\nПодпишись на мой Инстаграм 👉' \
-           '\nhttps://www.instagram.com/funtik_iv/'
-    keyboard = myKeyboard(1,'Готово', 'Yes1')
+    text = 'Привет, друг!\n\n'\
+            'Это бот для выдачи Чек-Листа по заработку 50-100.000 рублей в месяц на Яндекс Дзене\n\n'\
+            '❗Но хочу задать тебе один вопрос\n\n'\
+            '✅ Как ты впервые узнал обо мне?'
+    markup = types.InlineKeyboardMarkup(row_width=1)
+    btn1 = types.InlineKeyboardButton("Youtube", callback_data="yt")
+    btn2 = types.InlineKeyboardButton("Инстаграм", callback_data="inst")
+    btn3 = types.InlineKeyboardButton("Знакомый в НН", callback_data="nn")
+    btn4 = types.InlineKeyboardButton("ВК Дзен Дуэт", callback_data="vk")
+    btn5 = types.InlineKeyboardButton("Telegram", callback_data="tg")
+    markup.add(btn1)
+    markup.add(btn2)
+    markup.add(btn3)
+    markup.add(btn4)
+    markup.add(btn5)
     bot.send_message(message.chat.id, text, parse_mode='HTML', reply_markup=keyboard)
 
 
 @bot.message_handler(func=lambda message: True)
 def echo_message(message):
-    text = 'Привет. Хочешь получить Чек-лист "Яндекс Дзеню И как я на нем заработал 5🍋"?'
-    keyboard = myKeyboard(1,'Да','Yes1')
-    # bot.send_message(message.chat.id, text, parse_mode='HTML', reply_markup=keyboard)
+    text = 'Привет, друг!\n\n'\
+            'Это бот для выдачи Чек-Листа по заработку 50-100.000 рублей в месяц на Яндекс Дзене\n\n'\
+            '❗Но хочу задать тебе один вопрос\n\n'\
+            '✅ Как ты впервые узнал обо мне?'
+    markup = types.InlineKeyboardMarkup(row_width=1)
+    btn1 = types.InlineKeyboardButton("Youtube", callback_data="yt")
+    btn2 = types.InlineKeyboardButton("Инстаграм", callback_data="inst")
+    btn3 = types.InlineKeyboardButton("Знакомый в НН", callback_data="nn")
+    btn4 = types.InlineKeyboardButton("ВК Дзен Дуэт", callback_data="vk")
+    btn5 = types.InlineKeyboardButton("Telegram", callback_data="tg")
+    markup.add(btn1)
+    markup.add(btn2)
+    markup.add(btn3)
+    markup.add(btn4)
+    markup.add(btn5)
+    bot.send_message(message.chat.id, text, parse_mode='HTML', reply_markup=keyboard)
 
 
 @bot.callback_query_handler(func=lambda call:True)
 def callback(call):
     if call.message:
-        if call.data == 'Yes1':
-            text1 = "Отлично[. ](https://i.imgur.com/YIsLVdg.png)\n\n" \
-                    "Еще одна просьба - заполни, пожалуйста, анкету 📝\n" \
-                    "https://forms.gle/SDvy9UXVt1xrQfAa6\n\n" \
-                    "И, друзья, заполняйте по-чесноку всё. Инфа реально годная, а не очередная бесплатная херня. Всё о Дзене в одном файле.\n\n" \
-                    "✅ После заполнении анкеты, Гугл выдаст тебе ссылку на чек-лист\n\n" \
-                    "Дерзай ⚡"
-            keyboard = types.InlineKeyboardMarkup()
-            url_button = types.InlineKeyboardButton(text="📝 Заполнить Анкету", url="https://forms.gle/SDvy9UXVt1xrQfAa6")
-            keyboard.add(url_button)
-            # keyboard = myKeyboard(1,'📝 Заполнить Анкету', 'Yes666')
+        if call.data in ['yt', 'inst', 'nn', 'vk', 'tg']:
+            bot.send_photo(ид_получателя, open('ivan1.jpg', 'rb'));
+            text1 = 'Все, спасибо 👌🏻\n\n'\
+                    'Больше ничего не нужно - просто нажимай на кнопку ниже и бот выдаст тебе ссылку на PDF файл'
+            keyboard = myKeyboard(1,'Получить Чек-Лист', 'check_list')
             bot.delete_message(call.message.chat.id, call.message.id)
             bot.send_message(call.message.chat.id, text1, parse_mode='Markdown', reply_markup=keyboard)
-        elif call.data == 'No2':
-            text1 = "Мне будет намного приятнее выдавать чек-лист, если ты на меня подпишешься https://www.instagram.com/funtik_iv/"
-            keyboard = myKeyboard(1,'Готово', 'Yes2')
-            bot.delete_message(call.message.chat.id, call.message.id)
-            bot.send_message(call.message.chat.id, text=text1, parse_mode='HTML', reply_markup=keyboard)
-        elif call.data == 'Yes2':
-            text1 = 'Отлично, заполни небольшую гугл-форму. После чего получишь ссылку на чек-лист. https://forms.gle/vrBpiY6CKzd3QE177'
-            bot.delete_message(call.message.chat.id, call.message.id)
-            bot.send_message(call.message.chat.id, text=text1, parse_mode='Markdown')
-
+        if call.data == 'check_list':
+            text = 'Отлично'\
+                    '⚡Держи ссылку'\
+                    'https://drive.google.com/file/d/1Ks3LgChLqju72YwIdBRT.. ⚡'\
+                    'Инфа реально годная, надеюсь, ты оценишь её по достоинству '
+            bot.send_message(call.message.chat.id, text1, parse_mode='Markdown', reply_markup=keyboard)
+            bot.send_photo(ид_получателя, open('ivan1.jpg', 'rb'));
+            text = 'Друг\n\n'\
+                    'Меня всегда учили: чтобы что-то получить - сначала нужно отдать взамен. Вот я и поделился Чек-Листом 📝\n\n'\
+                    'Ни о чем просить не буду, просто оставлю ссылку на инстаграм, а ты уже решай, мы дружим или прощаемся 👉\n'\
+                    'https://www.instagram.com/funtik_iv/\n\n'\
+                    'В любом случае спасибо за уделенное время 💫'
+            bot.send_message(call.message.chat.id, text1, parse_mode='Markdown', reply_markup=keyboard)
+            bot.send_photo(ид_получателя, open('ivan2.jpg', 'rb'));
+            
 
 @server.route('/' + TOKEN, methods=['POST'])
 def getMessage():
