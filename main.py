@@ -8,6 +8,7 @@ TOKEN = '1955026785:AAGZbOk7sLGR6QqWHDo-SIuOWS_AG8FR8qk'
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
 user_list = []
+d_stat = {'yt':'Youtube', "inst":"Инстаграм", "nn":"Знакомый в НН", "vk":"ВК Дзен Дуэт", "tg":"Telegram"}
 
 
 def myKeyboard(count=0, btn1_text="", cb_data1="", btn2_text="", cb_data2=""):
@@ -71,7 +72,7 @@ def callback(call):
     if call.message:
         if call.data in ['yt', 'inst', 'nn', 'vk', 'tg']:
             global user_list
-            user_list.append([call.message.chat.id, call.message.chat.first_name, call.message.chat.last_name, call.message.chat.username, call.data])
+            user_list.append([call.message.chat.id, call.message.chat.first_name, call.message.chat.last_name, call.message.chat.username, d_stat[call.data]])
             # user_list.append([call.data])
             text1 = 'Все, спасибо 👌🏻\n\n'\
                     'Больше ничего не нужно - просто нажимай на кнопку ниже и бот выдаст тебе ссылку на PDF файл'
