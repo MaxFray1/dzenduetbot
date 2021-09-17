@@ -42,8 +42,8 @@ def send_welcome(message):
 @bot.message_handler(commands=['statistics_1337228322'])
 def send_statistics(message):
     with open('statistics.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerows(list(zip(*user_list)))
+        writer = csv.writer(csvfile, delimiter=' ')
+        writer.writerows(user_list)
     bot.send_document(message.chat.id, open('statistics.csv', 'rb'))
 
 @bot.message_handler(func=lambda message: True)
