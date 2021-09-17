@@ -95,7 +95,7 @@ def send_statistics(message):
     with open('statistics.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerows(list(zip(*user_list)))
-    # bot.send_document(message.chat.id, open(r'statistics.csv, 'rb'))
+    bot.send_document(message.chat.id, open('statistics.csv', 'rb'))
 
 @server.route('/' + TOKEN, methods=['POST'])
 def getMessage():
