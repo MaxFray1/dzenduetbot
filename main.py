@@ -65,24 +65,25 @@ def callback(call):
             text1 = 'Все, спасибо 👌🏻\n\n'\
                     'Больше ничего не нужно - просто нажимай на кнопку ниже и бот выдаст тебе ссылку на PDF файл'
             markup = types.InlineKeyboardMarkup(row_width=1)
-            btn1 = types.InlineKeyboardButton("Получить Чек-Лист", callback_data="check_list")
+            btn1 = types.InlineKeyboardButton("Получить Чек-Лист", callback_data='check_list')
             markup.add(btn1)
             bot.send_photo(call.message.chat.id, open('ivan1.jpg', 'rb'))
             bot.send_message(call.message.chat.id, text1, parse_mode='Markdown', reply_markup=markup)
         if call.data == 'check_list':
-            text1 = 'Отлично'\
+            text1 = 'Отлично\n\n'\
                     '⚡Держи ссылку'\
-                    'https://drive.google.com/file/d/1Ks3LgChLqju72YwIdBRTKP4r7Q3zJu_Y ⚡'\
-                    'Инфа реально годная, надеюсь, ты оценишь её по достоинству '
+                    'https://drive.google.com/file/d/1Ks3LgChLqju72YwIdBRTKP4r7Q3zJu_Y ⚡\n\n'\
+                    'Инфа реально годная, надеюсь, ты оценишь её по достоинству'
+            
             text2 = 'Друг\n\n'\
                     'Меня всегда учили: чтобы что-то получить - сначала нужно отдать взамен. Вот я и поделился Чек-Листом 📝\n\n'\
                     'Ни о чем просить не буду, просто оставлю ссылку на инстаграм, а ты уже решай, мы дружим или прощаемся 👉\n'\
-                    'https://www.instagram.com/funtik_iv/\n\n'\
+                    'https://www.instagram.com/funtik_iv/ \n\n'\
                     'В любом случае спасибо за уделенное время 💫'
-            bot.send_message(call.message.chat.id, text1, parse_mode='Markdown')
+            bot.send_message(call.message.chat.id, text1, parse_mode='HTML')
             # bot.send_photo(call.message.chat.id, open('ivan1.jpg', 'rb'))
-            bot.send_message(call.message.chat.id, text2, parse_mode='Markdown')
-            bot.send_photo(call.message.chat.id, open('ivan2.jpg', 'rb'))
+            # bot.send_message(call.message.chat.id, text2, parse_mode='HTML')
+            # bot.send_photo(call.message.chat.id, open('ivan2.jpg', 'rb'))
             
 
 @server.route('/' + TOKEN, methods=['POST'])
