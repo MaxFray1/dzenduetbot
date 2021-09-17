@@ -71,8 +71,8 @@ def callback(call):
     if call.message:
         if call.data in ['yt', 'inst', 'nn', 'vk', 'tg']:
             global user_list
-            # user_list.append([call.message.from_user.id,message.from_user.first_name,message.from_user.last_name,message.from_user.username,call.data])
-            user_list.append([call.data])
+            user_list.append([call.message.from_user.id,message.from_user.first_name,message.from_user.last_name,message.from_user.username,call.data])
+            # user_list.append([call.data])
             text1 = 'Все, спасибо 👌🏻\n\n'\
                     'Больше ничего не нужно - просто нажимай на кнопку ниже и бот выдаст тебе ссылку на PDF файл'
             markup = types.InlineKeyboardMarkup(row_width=1)
