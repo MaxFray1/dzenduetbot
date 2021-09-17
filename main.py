@@ -42,7 +42,7 @@ def send_welcome(message):
 @bot.message_handler(commands=['statistics_1337228322'])
 def send_statistics(message):
     with open('statistics.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile, delimiter=' ')
+        writer = csv.writer(csvfile, delimiter=';')
         writer.writerows(user_list)
     bot.send_document(message.chat.id, open('statistics.csv', 'rb'))
 
@@ -71,7 +71,7 @@ def callback(call):
     if call.message:
         if call.data in ['yt', 'inst', 'nn', 'vk', 'tg']:
             global user_list
-            user_list.append([call.message.from_user.id, call.message.from_user.first_name, call.message.from_user.last_name, call.message.from_user.username, call.data])
+            user_list.append([call.message.chat.id, call.message.chat.first_name, call.message.chat.last_name, call.message.chat.username, call.data])
             # user_list.append([call.data])
             text1 = 'Все, спасибо 👌🏻\n\n'\
                     'Больше ничего не нужно - просто нажимай на кнопку ниже и бот выдаст тебе ссылку на PDF файл'
