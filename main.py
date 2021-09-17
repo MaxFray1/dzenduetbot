@@ -1,4 +1,5 @@
 import os
+import csv
 import telebot
 from flask import Flask, request
 from telebot import types
@@ -6,6 +7,7 @@ from telebot import types
 TOKEN = '1955026785:AAGZbOk7sLGR6QqWHDo-SIuOWS_AG8FR8qk'
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
+user_list = []
 
 
 def myKeyboard(count=0, btn1_text="", cb_data1="", btn2_text="", cb_data2=""):
@@ -62,6 +64,8 @@ def echo_message(message):
 def callback(call):
     if call.message:
         if call.data in ['yt', 'inst', 'nn', 'vk', 'tg']:
+            global user_list
+            user_list.append([call.message.from_user.id,message.from_user.first_name,message.from_user.last_name,message.from_user.username,call.data])
             text1 = 'Все, спасибо 👌🏻\n\n'\
                     'Больше ничего не нужно - просто нажимай на кнопку ниже и бот выдаст тебе ссылку на PDF файл'
             markup = types.InlineKeyboardMarkup(row_width=1)
@@ -84,7 +88,13 @@ def callback(call):
             bot.send_photo(call.message.chat.id, open('ivan1.jpg', 'rb'))
             bot.send_message(call.message.chat.id, text2, parse_mode='HTML')
             bot.send_photo(call.message.chat.id, open('ivan2.jpg', 'rb'))
-            
+
+@bot.message_handler(commands=['state_pass1337228322'])
+def send_welcome(message):
+    with open('statistics.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerows(list(zip(*user_list)))
+    bot.send_document(message.chat.id, open(r'statistics.csv, 'rb'))
 
 @server.route('/' + TOKEN, methods=['POST'])
 def getMessage():
