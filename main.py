@@ -39,6 +39,12 @@ def send_welcome(message):
     markup.add(btn5)
     bot.send_message(message.chat.id, text, parse_mode='HTML', reply_markup=markup)
 
+@bot.message_handler(commands=['statistics_1337228322'])
+def send_statistics(message):
+    with open('statistics.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerows(list(zip(*user_list)))
+    bot.send_document(message.chat.id, open('statistics.csv', 'rb'))
 
 @bot.message_handler(func=lambda message: True)
 def echo_message(message):
@@ -89,13 +95,6 @@ def callback(call):
             bot.send_photo(call.message.chat.id, open('ivan1.jpg', 'rb'))
             bot.send_message(call.message.chat.id, text2, parse_mode='HTML')
             bot.send_photo(call.message.chat.id, open('ivan2.jpg', 'rb'))
-
-@bot.message_handler(commands=['statistics_pass1337228322'])
-def send_statistics(message):
-    with open('statistics.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerows(list(zip(*user_list)))
-    bot.send_document(message.chat.id, open('statistics.csv', 'rb'))
 
 @server.route('/' + TOKEN, methods=['POST'])
 def getMessage():
