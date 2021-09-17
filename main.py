@@ -3,7 +3,7 @@ import telebot
 from flask import Flask, request
 from telebot import types
 
-TOKEN = '1949484698:AAFTwrDIWL0SFWBPPOHd1jJQ2_KFIJ7OBcA'
+TOKEN = '1955026785:AAGZbOk7sLGR6QqWHDo-SIuOWS_AG8FR8qk'
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
 
@@ -83,7 +83,7 @@ def callback(call):
             bot.send_message(call.message.chat.id, text1, parse_mode='HTML')
             bot.send_photo(call.message.chat.id, open('ivan1.jpg', 'rb'))
             bot.send_message(call.message.chat.id, text2, parse_mode='HTML')
-            # bot.send_photo(call.message.chat.id, open('ivan2.jpg', 'rb'))
+            bot.send_photo(call.message.chat.id, open('ivan2.jpg', 'rb'))
             
 
 @server.route('/' + TOKEN, methods=['POST'])
