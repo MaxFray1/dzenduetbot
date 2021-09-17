@@ -72,7 +72,7 @@ def callback(call):
         if call.data == 'check_list':
             text1 = 'Отлично'\
                     '⚡Держи ссылку'\
-                    'https://drive.google.com/file/d/1Ks3LgChLqju72YwIdBRT.. ⚡'\
+                    'https://drive.google.com/file/d/1Ks3LgChLqju72YwIdBRTKP4r7Q3zJu_Y ⚡'\
                     'Инфа реально годная, надеюсь, ты оценишь её по достоинству '
             text2 = 'Друг\n\n'\
                     'Меня всегда учили: чтобы что-то получить - сначала нужно отдать взамен. Вот я и поделился Чек-Листом 📝\n\n'\
@@ -80,7 +80,7 @@ def callback(call):
                     'https://www.instagram.com/funtik_iv/\n\n'\
                     'В любом случае спасибо за уделенное время 💫'
             bot.send_message(call.message.chat.id, text1, parse_mode='Markdown')
-            bot.send_photo(call.message.chat.id, open('ivan1.jpg', 'rb'))
+            # bot.send_photo(call.message.chat.id, open('ivan1.jpg', 'rb'))
             bot.send_message(call.message.chat.id, text2, parse_mode='Markdown')
             bot.send_photo(call.message.chat.id, open('ivan2.jpg', 'rb'))
             
