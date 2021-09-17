@@ -61,7 +61,7 @@ def echo_message(message):
 @bot.callback_query_handler(func=lambda call:True)
 def callback(call):
     if call.message:
-        if call.data in ['yt', 'inst', 'nn', 'vk', 'tg']:
+        if call.data == 'yt' or call.data == 'inst' or call.data == 'nn' or call.data == 'vk' or call.data == 'tg':
             bot.send_photo(ид_получателя, open('ivan1.jpg', 'rb'));
             text1 = 'Все, спасибо 👌🏻\n\n'\
                     'Больше ничего не нужно - просто нажимай на кнопку ниже и бот выдаст тебе ссылку на PDF файл'
